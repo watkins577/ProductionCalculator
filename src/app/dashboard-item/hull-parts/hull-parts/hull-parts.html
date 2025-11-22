@@ -1,0 +1,41 @@
+<dashboard-item>
+  <dashboard-item-title>Hull Parts</dashboard-item-title>
+  <dashboard-item-content>
+    <table class="border-spacing-2">
+      <thead>
+        <tr class="bg-slate-700 text-gray-200 text-sm uppercase tracking-wider">
+          <td class="py-3 px-4 text-left">Material</td>
+          <td class="py-3 px-4 text-right">Plank Buy Price</td>
+          <td class="py-3 px-4 text-right">Plank Sell Price</td>
+          <td class="py-3 px-4 text-right">Hull Parts Buy Price</td>
+          <td class="py-3 px-4 text-right">Hull Parts Sell Price</td>
+          <td class="py-3 px-4 text-right">Margin</td>
+          <td class="py-3 px-4 text-right">GP Per XP</td>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of calculatedPrices(); track item.material) {
+        <tr class="hover:bg-slate-700 border-b border-gray-700">
+          <td class="py-3 px-4">{{ item.material }}</td>
+          <td class="py-3 px-4 text-right">{{ item.plankBuyPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.plankSellPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.hullPartsBuyPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.hullPartsSellPrice }}</td>
+          <td
+            class="py-3 px-4 text-right"
+            [class]="item.margin > 0 ? 'text-green-400' : 'text-red-400'"
+          >
+            {{ item.margin }}
+          </td>
+          <td
+            class="py-3 px-4 text-right"
+            [class]="item.margin > 0 ? 'text-green-400' : 'text-red-400'"
+          >
+            {{ item.gpPerXp }}
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </dashboard-item-content>
+</dashboard-item>
