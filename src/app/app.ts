@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PricesService } from './services/prices-service/prices-service';
 import { HullParts } from './dashboard-item/hull-parts/hull-parts/hull-parts';
+import { Sails } from './dashboard-item/sails/sails/sails';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HullParts],
+  imports: [RouterOutlet, HullParts, Sails],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

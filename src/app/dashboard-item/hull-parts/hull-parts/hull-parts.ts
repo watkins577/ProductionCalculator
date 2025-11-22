@@ -56,11 +56,14 @@ export class HullParts {
     if (!data) return [];
 
     return Object.entries(this.itemIds).map(([material, ids]) => {
-      const plankBuyPrice = data[ids.plank].high;
-      const plankSellPrice = data[ids.plank].low;
+      const plank = data[ids.plank];
+      const hullParts = data[ids.hullParts];
 
-      const hullPartsBuyPrice = data[ids.hullParts].high;
-      const hullPartsSellPrice = data[ids.hullParts].low;
+      const plankBuyPrice = plank.high;
+      const plankSellPrice = plank.low;
+
+      const hullPartsBuyPrice = hullParts.high;
+      const hullPartsSellPrice = hullParts.low;
 
       const margin = hullPartsSellPrice - plankBuyPrice * 5;
 

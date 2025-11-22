@@ -1,0 +1,56 @@
+<dashboard-item>
+  <dashboard-item-title>Sails</dashboard-item-title>
+  <dashboard-item-content>
+    <table class="border-spacing-2">
+      <thead>
+        <tr class="bg-slate-700 text-gray-200 text-sm uppercase tracking-wider">
+          <td class="py-3 px-4 text-left">Material</td>
+          <td class="py-3 px-4 text-right">Seed Buy Price</td>
+          <td class="py-3 px-4 text-right">Seed Sell Price</td>
+          <td class="py-3 px-4 text-right">Hop Buy Price</td>
+          <td class="py-3 px-4 text-right">Hop Sell Price</td>
+          <td class="py-3 px-4 text-right">Yarn Buy Price</td>
+          <td class="py-3 px-4 text-right">Yarn Sell Price</td>
+          <td class="py-3 px-4 text-right">Bolt Buy Price</td>
+          <td class="py-3 px-4 text-right">Bolt Sell Price</td>
+          <td class="py-3 px-4 text-right">Grow Margin</td>
+          <td class="py-3 px-4 text-right">Spin Margin</td>
+          <td class="py-3 px-4 text-right">Weave Margin</td>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of calculatedPrices(); track item.material) {
+        <tr class="hover:bg-slate-700 border-b border-gray-700">
+          <td class="py-3 px-4">{{ item.material }}</td>
+          <td class="py-3 px-4 text-right">{{ item.seedBuyPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.seedSellPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.hopBuyPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.hopSellPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.yarnBuyPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.yarnSellPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.boltBuyPrice }}</td>
+          <td class="py-3 px-4 text-right">{{ item.boltSellPrice }}</td>
+          <td
+            class="py-3 px-4 text-right"
+            [class]="item.growMargin > 0 ? 'text-green-400' : 'text-red-400'"
+          >
+            {{ item.growMargin }}
+          </td>
+          <td
+            class="py-3 px-4 text-right"
+            [class]="item.spinMargin > 0 ? 'text-green-400' : 'text-red-400'"
+          >
+            {{ item.spinMargin }}
+          </td>
+          <td
+            class="py-3 px-4 text-right"
+            [class]="item.weaveMargin > 0 ? 'text-green-400' : 'text-red-400'"
+          >
+            {{ item.weaveMargin }}
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </dashboard-item-content>
+</dashboard-item>
