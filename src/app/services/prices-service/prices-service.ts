@@ -22,7 +22,7 @@ export class PricesService {
   }
 
   public fetchPrices() {
-    return this.http.get(`${this.baseUrl}/latest`, this.headers).subscribe((prices: any) => {
+    return this.http.get(`${this.baseUrl}/5m`, this.headers).subscribe((prices: any) => {
       this.store.prices.set(prices);
     });
   }

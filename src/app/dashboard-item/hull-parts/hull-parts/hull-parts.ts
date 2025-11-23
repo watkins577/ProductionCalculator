@@ -59,11 +59,11 @@ export class HullParts {
       const plank = data[ids.plank];
       const hullParts = data[ids.hullParts];
 
-      const plankBuyPrice = plank.high;
-      const plankSellPrice = plank.low;
+      const plankBuyPrice = plank.avgHighPrice;
+      const plankSellPrice = plank.avgLowPrice;
 
-      const hullPartsBuyPrice = hullParts.high;
-      const hullPartsSellPrice = hullParts.low;
+      const hullPartsBuyPrice = hullParts.avgHighPrice;
+      const hullPartsSellPrice = hullParts.avgLowPrice;
 
       const margin = hullPartsSellPrice - plankBuyPrice * 5;
 
