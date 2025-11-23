@@ -40,14 +40,14 @@ export class Sails {
       const yarn = data[ids.yarn];
       const bolt = data[ids.bolt];
 
-      const seedBuyPrice = seed.avgHighPrice;
-      const seedSellPrice = seed.avgLowPrice;
-      const hopBuyPrice = hop.avgHighPrice;
-      const hopSellPrice = hop.avgLowPrice;
-      const yarnBuyPrice = yarn.avgHighPrice;
-      const yarnSellPrice = yarn.avgLowPrice;
-      const boltBuyPrice = bolt.avgHighPrice;
-      const boltSellPrice = bolt.avgLowPrice;
+      const seedBuyPrice = seed?.avgHighPrice ?? 0;
+      const seedSellPrice = seed?.avgLowPrice ?? 0;
+      const hopBuyPrice = hop?.avgHighPrice ?? 0;
+      const hopSellPrice = hop?.avgLowPrice ?? 0;
+      const yarnBuyPrice = yarn?.avgHighPrice ?? 0;
+      const yarnSellPrice = yarn?.avgLowPrice ?? 0;
+      const boltBuyPrice = bolt?.avgHighPrice ?? 0;
+      const boltSellPrice = bolt?.avgLowPrice ?? 0;
 
       const growMargin = hopSellPrice * 27 - seedBuyPrice * 3;
       const spinMargin = yarnSellPrice - hopBuyPrice;
