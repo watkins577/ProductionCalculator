@@ -21,9 +21,19 @@ export class PricesService {
     });
   }
 
-  public fetchPrices() {
-    return this.http.get(`${this.baseUrl}/5m`, this.headers).subscribe((prices: any) => {
-      this.store.prices.set(prices);
-    });
+  public fetchFiveMinutePrices() {
+    return this.http
+      .get<ResponseData<FiveMinutePriceStats>>(`${this.baseUrl}/5m`, this.headers)
+      .subscribe((prices: ResponseData<FiveMinutePriceStats>) => {
+        this.store.fiveMinutePrices.set(prices.data);
+      });
+  }
+
+  public fetchLatestPrices() {
+    return this.http
+      .get<ResponseData<LatestPriceStats>>(`${this.baseUrl}/latest`, this.headers)
+      .subscribe((prices: ResponseData<LatestPriceStats>) => {
+        this.store.latestPrices.set(prices.data);
+      });
   }
 }

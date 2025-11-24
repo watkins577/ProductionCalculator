@@ -31,7 +31,7 @@ export class Sails {
   constructor(private store: PricesStore) {}
 
   private calculatePrices() {
-    const data = this.store?.prices()?.data;
+    const data = this.store?.prices();
     if (!data) return [];
 
     return Object.entries(this.itemIds).map(([material, ids]) => {
@@ -40,14 +40,14 @@ export class Sails {
       const yarn = data[ids.yarn];
       const bolt = data[ids.bolt];
 
-      const seedBuyPrice = seed?.avgHighPrice ?? 0;
-      const seedSellPrice = seed?.avgLowPrice ?? 0;
-      const hopBuyPrice = hop?.avgHighPrice ?? 0;
-      const hopSellPrice = hop?.avgLowPrice ?? 0;
-      const yarnBuyPrice = yarn?.avgHighPrice ?? 0;
-      const yarnSellPrice = yarn?.avgLowPrice ?? 0;
-      const boltBuyPrice = bolt?.avgHighPrice ?? 0;
-      const boltSellPrice = bolt?.avgLowPrice ?? 0;
+      const seedBuyPrice = seed?.avgHighPrice ?? seed.high;
+      const seedSellPrice = seed?.avgLowPrice ?? seed.low;
+      const hopBuyPrice = hop?.avgHighPrice ?? hop.high;
+      const hopSellPrice = hop?.avgLowPrice ?? hop.low;
+      const yarnBuyPrice = yarn?.avgHighPrice ?? yarn.high;
+      const yarnSellPrice = yarn?.avgLowPrice ?? yarn.low;
+      const boltBuyPrice = bolt?.avgHighPrice ?? bolt.high;
+      const boltSellPrice = bolt?.avgLowPrice ?? bolt.low;
 
       const growMargin = hopSellPrice * 27 - seedBuyPrice * 3;
       const spinMargin = yarnSellPrice - hopBuyPrice;

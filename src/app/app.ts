@@ -17,9 +17,11 @@ export class App {
 
   ngOnInit() {
     this.pricesService.fetchMapping();
-    this.pricesService.fetchPrices();
+    this.pricesService.fetchFiveMinutePrices();
+    this.pricesService.fetchLatestPrices();
     setInterval(() => {
-      this.pricesService.fetchPrices();
+      this.pricesService.fetchFiveMinutePrices();
+      this.pricesService.fetchLatestPrices();
     }, 1000 * 60);
   }
 }

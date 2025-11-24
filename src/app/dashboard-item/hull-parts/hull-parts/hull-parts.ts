@@ -52,18 +52,18 @@ export class HullParts {
   constructor(private store: PricesStore) {}
 
   private calculatePrices() {
-    const data = this.store?.prices()?.data;
+    const data = this.store?.prices();
     if (!data) return [];
 
     return Object.entries(this.itemIds).map(([material, ids]) => {
       const plank = data[ids.plank];
       const hullParts = data[ids.hullParts];
 
-      const plankBuyPrice = plank?.avgHighPrice ?? 0;
-      const plankSellPrice = plank?.avgLowPrice ?? 0;
+      const plankBuyPrice = plank?.avgHighPrice ?? plank.high;
+      const plankSellPrice = plank?.avgLowPrice ?? plank.low;
 
-      const hullPartsBuyPrice = hullParts?.avgHighPrice ?? 0;
-      const hullPartsSellPrice = hullParts?.avgLowPrice ?? 0;
+      const hullPartsBuyPrice = hullParts?.avgHighPrice ?? hullParts.high;
+      const hullPartsSellPrice = hullParts?.avgLowPrice ?? hullParts.low;
 
       const margin = hullPartsSellPrice - plankBuyPrice * 5;
 
